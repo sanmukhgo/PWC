@@ -16,22 +16,26 @@
     .heading{
         text-align: center;
         font-family: Verdana, Geneva, Tahoma, sans-serif;
-        font-size: 200%;
-        padding: 2px;
+        font-size: 160%;
+        padding: 8px;
+        width: 100%;
+        font-weight: bold;
         color: whitesmoke;
         position: relative;
-        background-color:#1f2527;
+        background-color:#3D0099;
+        box-shadow: 0px 3px 6px #757373;
     }
 
     .enable{
-        margin-left: 4em; 
+        margin-left: 2em; 
         font-family: Arial, Helvetica, sans-serif;
     }
 
     .parameter{
         font-family: 'Courier New', Courier, monospace;
         font-size: 120%;
-        text-decoration: underline;
+        color: rgb(90, 33, 143);
+        /*font-weight: bold;*/
     }
 
     .equation{
@@ -53,24 +57,26 @@
         height: 100%;
         float: left;
         position: relative;
-        background-color: #ece9e9;
     }
 
     .inleft{
         width: 100%;
-        height: 19.5%;
-        padding-top: 3px;
-        padding-left: 3px;
+        height: 18%;
+        padding-top: 6px;
+        padding-left: 6px;
+        background-color: #ece9e9;
+        box-shadow: 1px 1px 3px #888888;
+        margin-left: 10px;
     }
     
     .inleft:hover{
-        -webkit-box-shadow:inset 0px 0px 0px 10px black;
-        -moz-box-shadow:inset 0px 0px 0px 10px black;
-        box-shadow: inset 0px 0px 0px 2px black;
+        -webkit-box-shadow:inset 0px 0px 0px 3px black;
+        -moz-box-shadow:inset 0px 0px 0px 3px black;
+        box-shadow: inset 0px 0px 0px 3px blueviolet;
     }
 
     .rightpane{
-        width: 70%;
+        width: 67%;
         height: 100%;
         position: relative;
         float: right;
@@ -120,7 +126,7 @@
     }
 
     input:focus + .slider {
-      box-shadow: 0 0 1px #2196F3;
+      box-shadow: 0 0 2px #2196F3;
     }
 
     input:checked + .slider:before {
@@ -143,7 +149,8 @@
     }
 
     input[type=number] {
-        width: 10%;
+        text-align: center;
+        width: 20%;
         padding: 4px 5px;
         margin: 2px 0;
         box-sizing: border-box;
@@ -171,7 +178,7 @@
     <div class="container">
         <div class="leftpane">
 
-            <div class="inleft">
+            <div class="inleft" style="margin-top:16px">
                 <form id="form1" class="form">
                     <label>
                         <span class="parameter">
@@ -181,20 +188,20 @@
                             : \(y = \frac{w_1}{1+t}\)
                         </span>
                     </label>
-                    <br><br><br>
+                    <br><br>
                     <label class="weight" for="w1" >
-                        W<sub>1</sub>=
+                        W<sub>1</sub> =
                     </label>
                     <input type="number" id="w1" value="1" />
                     <input type="submit" value="Update" class="button" />
                     <span class="enable">Enable :</span>
                     <label class="switch">
-                        <input type="checkbox" />
+                        <input type="checkbox" id="e1" onclick="draw()" checked/>
                         <span class="slider"></span>
                     </label>
                 </form>
             </div>
-
+            <br>
             <div class="inleft">
                 <form id="form2" class="form">
                     <label>
@@ -206,21 +213,23 @@
                         </span>
                     </label>
                     <br>
-                    x=%fulfillability
+                    <span class="parameter" style="font-size: 90%;font-style: italic;color: brown; ">
+                        x=%fulfillability
+                    </span>
                     <br><br>
                     <label class ="weight" for="w2" >
-                        W<sub>2</sub>=
+                        W<sub>2</sub> =
                     </label>
                     <input type="number" id="w2" value="2" />
                     <input type="submit" value="Update" class="button" />
                     <span class="enable">Enable :</span>
                     <label class="switch">
-                        <input type="checkbox" />
+                        <input type="checkbox" id="e2" onclick="draw()" checked/>
                         <span class="slider"></span>
                     </label>
                 </form>
             </div>
-
+            <br>
             <div class="inleft">
                 <form id="form3" class="form">
                     <label>
@@ -231,20 +240,20 @@
                             : \(y = \frac{100-x}{100}w_3\)
                         </span>
                     </label>
-                    <br><br><br>
+                    <br><br>
                     <label class ="weight" for="w3" >
-                        W<sub>3</sub>=
+                        W<sub>3</sub> =
                     </label>
                     <input type="number" id="w3" value="3" />
                     <input type="submit" value="Update" class="button" />
                     <span class="enable">Enable :</span>
                     <label class="switch">
-                        <input type="checkbox" />
+                        <input type="checkbox" id="e3" onclick="draw()" checked/>
                         <span class="slider"></span>
                     </label>
                 </form>
             </div>
-
+            <br>
             <div class="inleft">
                 <form id="form4" class="form">
                     <label>
@@ -255,20 +264,20 @@
                             : \(y = w_4x\)
                         </span>
                     </label>
-                    <br><br><br>
+                    <br><br>
                     <label class ="weight" for="w4" >
-                        W<sub>4</sub>=
+                        W<sub>4</sub> =
                     </label>
                     <input type="number" id="w4" value="4" />
                     <input type="submit" value="Update" class="button" />
                     <span class="enable">Enable :</span>
                     <label class="switch">
-                        <input type="checkbox" />
+                        <input type="checkbox" id="e4" onclick="draw()" checked/>
                         <span class="slider"></span>
                     </label>
                 </form>
             </div>
-
+            <br>
             <div class="inleft">
                 <form id="form5" class="form">
                     <label>
@@ -279,20 +288,21 @@
                             : \(y = w_5x\)
                         </span>
                     </label>
-                    <br><br><br>
+                    <br><br>
                     <label class ="weight" for="w5" >
-                        W<sub>5</sub>=
+                        W<sub>5</sub> =
                     </label>
                     <input type="number" id="w5" value="5" />
                     <input type="submit" value="Update" class="button" />
                     <span class="enable">Enable :</span>
                     <label class="switch">
-                        <input type="checkbox" />
+                        <input type="checkbox" id="e5" onclick="draw()" checked/>
                         <span class="slider"></span>
                     </label>
                 </form>
             </div>
         </div>
+        <br>
         <div class="rightpane" id="plot"></div>
     </div>
 
@@ -319,7 +329,7 @@
             }
 
             const min=-10
-            const max=10
+            const max=15
             const step=0.01
             const pts=parseInt((max-min)/step)
 
@@ -328,6 +338,12 @@
             w3=parseFloat(document.getElementById("w3").value)
             w4=parseFloat(document.getElementById("w4").value)
             w5=parseFloat(document.getElementById("w5").value)
+
+            e1=document.getElementById("e1").checked;
+            e2=document.getElementById("e2").checked;
+            e3=document.getElementById("e3").checked;
+            e4=document.getElementById("e4").checked;
+            e5=document.getElementById("e5").checked;
 
             xVal=[]
             xVal1=[]
@@ -366,36 +382,67 @@
                 x: xVal1,
                 y: yVal1,
                 type: 'scatter',
-                name: "Pick before Time"
+                name: "Pick before Time",
+                line: {
+                    color: 'rgb(0, 128, 255)',
+                    width: 2
+                }
             }
             trace2 = {
                 x: xVal,
                 y: yVal2,
                 type: 'scatter',
-                name: "Rack Fulfillability"
+                name: "Rack Fulfillability",
+                line: {
+                    color: 'rgb(255, 102, 51)',
+                    width: 2
+                }
             }
             trace3 = {
                 x: xVal,
                 y: yVal3,
                 type: 'scatter',
-                name: "Client Priority"
+                name: "Client Priority",
+                line: {
+                    color: 'rgb(51, 204, 51)',
+                    width: 2
+                }
             }
             trace4 = {
                 x: xVal,
                 y: yVal4,
                 type: 'scatter',
-                name: "Distance"
+                name: "Distance",
+                line: {
+                    color: 'rgb(204, 41, 0)',
+                    width: 2
+                }
             }
             trace5 = {
                 x: xVal,
                 y: yVal5,
                 type: 'scatter',
-                name: "No.of Rack"
+                name: "No. of Rack",
+                line: {
+                    color: 'rgb(153, 0, 153)',
+                    width: 2
+                }
             }
+            trace=[]
+            if(e1)
+                trace.push(trace1);
+            if(e2)
+                trace.push(trace2);
+            if(e3)
+                trace.push(trace3);
+            if(e4)
+                trace.push(trace4);
+            if(e5)
+                trace.push(trace5);
 
-            data = [trace1,trace2,trace3,trace4,trace5]
+            data = trace;
 
-            Plotly.newPlot('plot',data)
+            Plotly.newPlot('plot',data);
         }
 
         document.getElementById('form1').onsubmit = function(event) {
