@@ -1,4 +1,4 @@
 # Pick Weights Calibrator
-A web-based interactive graph showing graphs for different parameters heuristics involved.
+A web-based interactive graph showing plots of different parameter heuristics involved.
 
-It can also combine multiple graphs along with fixing other parameters to show variation of a combination of certain effects
+It can also combine multiple graphs along with fixing other parameters to show variation of a combination of certain parameters.
