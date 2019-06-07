@@ -1,6 +1,9 @@
 <!DOCTYPE html>
 <html>
 <head>
+    <link href="https://fonts.googleapis.com/css?family=Josefin+Sans&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Karla&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Montserrat&display=swap" rel="stylesheet">
     <title>Pick Weights Calibrator</title>
     <script src="https://cdn.plot.ly/plotly-1.35.2.min.js"></script>
     <script type="text/javascript" async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-MML-AM_CHTML" async>
@@ -15,14 +18,13 @@
 
     .heading{
         text-align: center;
-        font-family: Verdana, Geneva, Tahoma, sans-serif;
-        font-size: 160%;
+        font-family: 'Karla', sans-serif;
+        font-size: 170%;
         padding: 8px;
-        width: 100%;
         font-weight: bold;
         color: whitesmoke;
         position: relative;
-        background-color:#3D0099;
+        background-color:rgb(45, 8, 179);
         box-shadow: 0px 3px 6px #757373;
     }
 
@@ -32,8 +34,8 @@
     }
 
     .parameter{
-        font-family: 'Courier New', Courier, monospace;
-        font-size: 120%;
+        font-family: 'Montserrat',sans-serif;
+        font-size: 130%;
         color: rgb(90, 33, 143);
         /*font-weight: bold;*/
     }
@@ -49,12 +51,12 @@
 
     .container{
         width: 100%;
-        height: 93%;
+        height: 35em
     }
 
     .leftpane{
-        width: 29.8%;
-        height: 100%;
+        width: 23em;
+        height: 32em;
         float: left;
         position: relative;
     }
@@ -65,7 +67,7 @@
         padding-top: 6px;
         padding-left: 6px;
         background-color: #ece9e9;
-        box-shadow: 1px 1px 3px #888888;
+        box-shadow: 1px 1px 3px #c2bebe;
         margin-left: 10px;
     }
     
@@ -76,10 +78,11 @@
     }
 
     .rightpane{
-        width: 67%;
+        width: 53em;
         height: 100%;
         position: relative;
-        float: right;
+        /*float: right;*/
+        margin-left: 25em;
         background-color: lightskyblue;
         border-collapse: collapse;
     }
@@ -192,11 +195,11 @@
                     <label class="weight" for="w1" >
                         W<sub>1</sub> =
                     </label>
-                    <input type="number" id="w1" value="1" />
+                    <input type="number" class="w" id="w1" value="1" />
                     <input type="submit" value="Update" class="button" />
                     <span class="enable">Enable :</span>
                     <label class="switch">
-                        <input type="checkbox" id="e1" onclick="draw()" checked/>
+                        <input type="checkbox" class="e" id="e1" onclick="draw()" checked/>
                         <span class="slider"></span>
                     </label>
                 </form>
@@ -216,15 +219,15 @@
                     <span class="parameter" style="font-size: 90%;font-style: italic;color: brown; ">
                         x=%fulfillability
                     </span>
-                    <br><br>
+                    <br>
                     <label class ="weight" for="w2" >
                         W<sub>2</sub> =
                     </label>
-                    <input type="number" id="w2" value="2" />
+                    <input type="number" class="w" id="w2" value="2" />
                     <input type="submit" value="Update" class="button" />
                     <span class="enable">Enable :</span>
                     <label class="switch">
-                        <input type="checkbox" id="e2" onclick="draw()" checked/>
+                        <input type="checkbox" class="e" id="e2" onclick="draw()" checked/>
                         <span class="slider"></span>
                     </label>
                 </form>
@@ -244,11 +247,11 @@
                     <label class ="weight" for="w3" >
                         W<sub>3</sub> =
                     </label>
-                    <input type="number" id="w3" value="3" />
+                    <input type="number" class="w" id="w3" value="3" />
                     <input type="submit" value="Update" class="button" />
                     <span class="enable">Enable :</span>
                     <label class="switch">
-                        <input type="checkbox" id="e3" onclick="draw()" checked/>
+                        <input type="checkbox" class="e" id="e3" onclick="draw()" checked/>
                         <span class="slider"></span>
                     </label>
                 </form>
@@ -268,11 +271,11 @@
                     <label class ="weight" for="w4" >
                         W<sub>4</sub> =
                     </label>
-                    <input type="number" id="w4" value="4" />
+                    <input type="number" class="w" id="w4" value="4" />
                     <input type="submit" value="Update" class="button" />
                     <span class="enable">Enable :</span>
                     <label class="switch">
-                        <input type="checkbox" id="e4" onclick="draw()" checked/>
+                        <input type="checkbox" class="e" id="e4" onclick="draw()" checked/>
                         <span class="slider"></span>
                     </label>
                 </form>
@@ -292,11 +295,11 @@
                     <label class ="weight" for="w5" >
                         W<sub>5</sub> =
                     </label>
-                    <input type="number" id="w5" value="5" />
+                    <input type="number" class="w" id="w5" value="5" />
                     <input type="submit" value="Update" class="button" />
                     <span class="enable">Enable :</span>
                     <label class="switch">
-                        <input type="checkbox" id="e5" onclick="draw()" checked/>
+                        <input type="checkbox" class="e" id="e5" onclick="draw()" checked/>
                         <span class="slider"></span>
                     </label>
                 </form>
@@ -333,54 +336,46 @@
             const step=0.01
             const pts=parseInt((max-min)/step)
 
-            w1=parseFloat(document.getElementById("w1").value)
-            w2=parseFloat(document.getElementById("w2").value)
-            w3=parseFloat(document.getElementById("w3").value)
-            w4=parseFloat(document.getElementById("w4").value)
-            w5=parseFloat(document.getElementById("w5").value)
+            w=document.getElementsByClassName("w");
+            e=document.getElementsByClassName("e");
 
-            e1=document.getElementById("e1").checked;
-            e2=document.getElementById("e2").checked;
-            e3=document.getElementById("e3").checked;
-            e4=document.getElementById("e4").checked;
-            e5=document.getElementById("e5").checked;
-
-            xVal=[]
-            xVal1=[]
+            xVal=[];
+            xVal0=[];
             for(i=0;i<=pts;i++){
                 xVal[i]=min+step*i;
             }
             for(i=0,j=0;i<=pts;i++){
                 if((-10+0.2*i)!=-1){
-                    xVal1[j]=min+step*i;
+                    xVal0[j]=min+step*i;
                     j++;
                 }
             }
 
-            yVal1=[]
-            yVal2=[]
-            yVal3=[]
-            yVal4=[]
-            yVal5=[]
+            yVal0=[]
+            yVal1=[];
+            yVal2=[];
+            yVal3=[];
+            yVal4=[];
             for(i=0;i<pts;i++){
-                yVal1[i]=fw1(w1,xVal1[i])
+                yVal0[i]=fw1(w[0].value,xVal0[i])
             }
             for(i=0;i<=pts;i++){
-                yVal2[i]=fw2(w2,xVal[i])
+                yVal1[i]=fw2(w[1].value,xVal[i])
             }
             for(i=0;i<=pts;i++){
-                yVal3[i]=fw3(w3,xVal[i])
+                yVal2[i]=fw3(w[2].value,xVal[i])
             }
             for(i=0;i<=pts;i++){
-                yVal4[i]=fw4(w4,xVal[i])
+                yVal3[i]=fw4(w[3].value,xVal[i])
             }
             for(i=0;i<=pts;i++){
-                yVal5[i]=fw5(w5,xVal[i])
+                yVal4[i]=fw5(w[4].value,xVal[i])
             }
             
-            trace1 = {
-                x: xVal1,
-                y: yVal1,
+            trc=[]
+            trc[0] = {
+                x: xVal0,
+                y: yVal0,
                 type: 'scatter',
                 name: "Pick before Time",
                 line: {
@@ -388,9 +383,9 @@
                     width: 2
                 }
             }
-            trace2 = {
+            trc[1] = {
                 x: xVal,
-                y: yVal2,
+                y: yVal1,
                 type: 'scatter',
                 name: "Rack Fulfillability",
                 line: {
@@ -398,9 +393,9 @@
                     width: 2
                 }
             }
-            trace3 = {
+            trc[2] = {
                 x: xVal,
-                y: yVal3,
+                y: yVal2,
                 type: 'scatter',
                 name: "Client Priority",
                 line: {
@@ -408,9 +403,9 @@
                     width: 2
                 }
             }
-            trace4 = {
+            trc[3] = {
                 x: xVal,
-                y: yVal4,
+                y: yVal3,
                 type: 'scatter',
                 name: "Distance",
                 line: {
@@ -418,9 +413,9 @@
                     width: 2
                 }
             }
-            trace5 = {
+            trc[4] = {
                 x: xVal,
-                y: yVal5,
+                y: yVal4,
                 type: 'scatter',
                 name: "No. of Rack",
                 line: {
@@ -428,58 +423,58 @@
                     width: 2
                 }
             }
+
             trace=[]
-            if(e1)
-                trace.push(trace1);
-            if(e2)
-                trace.push(trace2);
-            if(e3)
-                trace.push(trace3);
-            if(e4)
-                trace.push(trace4);
-            if(e5)
-                trace.push(trace5);
+            for(i=0;i<5;i++)
+                if(e[i].checked)
+                    trace.push(trc[i]);
 
             data = trace;
+            layout = {
+                legend: {
+                    traceorder: 'normal',
+                    font: {
+                        family: 'Josefin sans',
+                        size: 14,
+                        color: '#000'
+                    },
+                    bgcolor: '#E2E2E2'
+                },
+                xaxis: {
+                    title: "x",
+                    titlefont: { 
+                            family: 'Courier New, monospace',
+                            size: 30,
+                            color: '#7f7f7f'
+                        },
+                    linecolor: 'black',
+                    linewidth: 2,
+                    mirror: true
+                },
+                yaxis: {
+                    title: "y",
+                    titlefont: { 
+                            family: 'Courier New, monospace',
+                            size: 25,
+                            color: '#7f7f7f'
+                        },
+                    linecolor: 'black',
+                    linewidth: 2,
+                    mirror: true
+                }
+            };
 
-            Plotly.newPlot('plot',
-                            data,
-                            {
-                            xaxis: {
-                                linecolor: 'black',
-                                linewidth: 2,
-                                mirror: true
-                            },
-                            yaxis: {
-                                linecolor: 'black',
-                                linewidth: 2,
-                                mirror: true
-                            }
-                            });
+            Plotly.newPlot('plot',data,layout);
         }
 
-        document.getElementById('form1').onsubmit = function(event) {
-            event.preventDefault();
-            draw();
+        form=document.getElementsByClassName('form');
+        for(i=0;i<5;i++){
+            form[i].onsubmit = function(event) {
+                event.preventDefault();
+                draw();
+            }
         }
-        document.getElementById('form2').onsubmit = function(event) {
-            event.preventDefault();
-            draw();
-        }
-        document.getElementById('form3').onsubmit = function(event) {
-            event.preventDefault();
-            draw();
-        }
-        document.getElementById('form4').onsubmit = function(event) {
-            event.preventDefault();
-            draw();
-        }
-        document.getElementById('form5').onsubmit = function(event) {
-            event.preventDefault();
-            draw();
-        }
-        draw()
-              
+        draw()       
     </script>
 </body>
 </html>
