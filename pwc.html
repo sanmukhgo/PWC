@@ -166,49 +166,126 @@
     <div class="heading">Pick Weights Calibrator</div>
     <div class="container">
         <div class="leftpane">
+
             <div class="inleft">
-                <form id="form" class="form">
-                        <label>
-                            <span class="parameter">
-                                Pick before time 
-                            </span>   
-                            <span class="equation">
-                                : \(y = \frac{w_1}{1+t}\)
-                            </span>
-                        </label>
-                        <br><br>
-                        <label class="weight" for="w1" >
-                            W<sub>1</sub>=
-                        </label>
-                        <input type="number" id="w1" value="0" />
-                        <input type="submit" value="Update" class="button" />
-                        <span class="enable">Enable :</span>
-                        <label class="switch">
-                            <input type="checkbox" />
-                            <span class="slider"></span>
-                        </label>
+                <form id="form1" class="form">
+                    <label>
+                        <span class="parameter">
+                            Pick before time
+                        </span>   
+                        <span class="equation">
+                            : \(y = \frac{w_1}{1+t}\)
+                        </span>
+                    </label>
+                    <br><br>
+                    <label class="weight" for="w1" >
+                        W<sub>1</sub>=
+                    </label>
+                    <input type="number" id="w1" value="0" />
+                    <input type="submit" value="Update" class="button" />
+                    <span class="enable">Enable :</span>
+                    <label class="switch">
+                        <input type="checkbox" />
+                        <span class="slider"></span>
+                    </label>
                 </form>
             </div>
+
             <div class="inleft">
-                <form id="form" class="form">
-                        <label style="font-size:130%">
-                            Rack fulfillability :   <span style="font-size:130%">\(y = {w_2x}\)</span>
-                        </label>
-                        <br><br>
-                        <label for="w1" >
-                            W<sub>2</sub>=
-                        </label>
-                        <input type="number" id="w1" value="0" />
-                        <input type="submit" value="Update" class="button" />
-                        <span class="enable">Enable :</span>
-                        <label class="switch">
-                            <input type="checkbox" />
-                            <span class="slider"></span>
-                        </label>
+                <form id="form2" class="form">
+                    <label>
+                        <span class="parameter">
+                            Rack fulfillability
+                        </span>
+                        <span class="equation">
+                            : \(y = {w_2x}\)
+                        </span>
+                    </label>
+                    <br><br>
+                    <label class ="weight" for="w2" >
+                        W<sub>2</sub>=
+                    </label>
+                    <input type="number" id="w2" value="0" />
+                    <input type="submit" value="Update" class="button" />
+                    <span class="enable">Enable :</span>
+                    <label class="switch">
+                        <input type="checkbox" />
+                        <span class="slider"></span>
+                    </label>
+                </form>
             </div>
-            <div class="inleft"></div>
-            <div class="inleft"></div>
-            <div class="inleft"></div>
+
+            <div class="inleft">
+                <form id="form3" class="form">
+                    <label>
+                        <span class="parameter">
+                            Client Priority
+                        </span>
+                        <span class="equation">
+                            : \(y = \frac{100-x}{100}w_3\)
+                        </span>
+                    </label>
+                    <br><br>
+                    <label class ="weight" for="w3" >
+                        W<sub>3</sub>=
+                    </label>
+                    <input type="number" id="w3" value="0" />
+                    <input type="submit" value="Update" class="button" />
+                    <span class="enable">Enable :</span>
+                    <label class="switch">
+                        <input type="checkbox" />
+                        <span class="slider"></span>
+                    </label>
+                </form>
+            </div>
+
+            <div class="inleft">
+                <form id="form4" class="form">
+                    <label>
+                        <span class="parameter">
+                            Distance
+                        </span>
+                        <span class="equation">
+                            : \(y = w_4x\)
+                        </span>
+                    </label>
+                    <br><br>
+                    <label class ="weight" for="w4" >
+                        W<sub>4</sub>=
+                    </label>
+                    <input type="number" id="w4" value="0" />
+                    <input type="submit" value="Update" class="button" />
+                    <span class="enable">Enable :</span>
+                    <label class="switch">
+                        <input type="checkbox" />
+                        <span class="slider"></span>
+                    </label>
+                </form>
+            </div>
+
+            <div class="inleft">
+                <form id="form4" class="form">
+                    <label>
+                        <span class="parameter">
+                            No. of Racks
+                        </span>
+                        <span class="equation">
+                            : \(y = w_5x\)
+                        </span>
+                    </label>
+                    <br><br>
+                    <label class ="weight" for="w5" >
+                        W<sub>5</sub>=
+                    </label>
+                    <input type="number" id="w5" value="0" />
+                    <input type="submit" value="Update" class="button" />
+                    <span class="enable">Enable :</span>
+                    <label class="switch">
+                        <input type="checkbox" />
+                        <span class="slider"></span>
+                    </label>
+                </form>
+            </div>
         </div>
         <div class="rightpane" id="plot"></div>
     </div>
