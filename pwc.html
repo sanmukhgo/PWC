@@ -29,7 +29,8 @@
     }
 
     .parameter{
-        font-size: 130%;
+        font-family: 'Courier New', Courier, monospace;
+        font-size: 120%;
         text-decoration: underline;
     }
 
@@ -39,6 +40,7 @@
 
     .weight{
         font-weight: bold;
+        font-size: 120%;
     }
 
     .container{
@@ -163,7 +165,9 @@
 
 </style>
 <body>
-    <div class="heading">Pick Weights Calibrator</div>
+    <div class="heading">
+        Pick Weights Calibrator
+    </div>
     <div class="container">
         <div class="leftpane">
 
@@ -177,11 +181,11 @@
                             : \(y = \frac{w_1}{1+t}\)
                         </span>
                     </label>
-                    <br><br>
+                    <br><br><br>
                     <label class="weight" for="w1" >
                         W<sub>1</sub>=
                     </label>
-                    <input type="number" id="w1" value="0" />
+                    <input type="number" id="w1" value="1" />
                     <input type="submit" value="Update" class="button" />
                     <span class="enable">Enable :</span>
                     <label class="switch">
@@ -201,11 +205,13 @@
                             : \(y = {w_2x}\)
                         </span>
                     </label>
+                    <br>
+                    x=%fulfillability
                     <br><br>
                     <label class ="weight" for="w2" >
                         W<sub>2</sub>=
                     </label>
-                    <input type="number" id="w2" value="0" />
+                    <input type="number" id="w2" value="2" />
                     <input type="submit" value="Update" class="button" />
                     <span class="enable">Enable :</span>
                     <label class="switch">
@@ -225,11 +231,11 @@
                             : \(y = \frac{100-x}{100}w_3\)
                         </span>
                     </label>
-                    <br><br>
+                    <br><br><br>
                     <label class ="weight" for="w3" >
                         W<sub>3</sub>=
                     </label>
-                    <input type="number" id="w3" value="0" />
+                    <input type="number" id="w3" value="3" />
                     <input type="submit" value="Update" class="button" />
                     <span class="enable">Enable :</span>
                     <label class="switch">
@@ -249,11 +255,11 @@
                             : \(y = w_4x\)
                         </span>
                     </label>
-                    <br><br>
+                    <br><br><br>
                     <label class ="weight" for="w4" >
                         W<sub>4</sub>=
                     </label>
-                    <input type="number" id="w4" value="0" />
+                    <input type="number" id="w4" value="4" />
                     <input type="submit" value="Update" class="button" />
                     <span class="enable">Enable :</span>
                     <label class="switch">
@@ -264,7 +270,7 @@
             </div>
 
             <div class="inleft">
-                <form id="form4" class="form">
+                <form id="form5" class="form">
                     <label>
                         <span class="parameter">
                             No. of Racks
@@ -273,11 +279,11 @@
                             : \(y = w_5x\)
                         </span>
                     </label>
-                    <br><br>
+                    <br><br><br>
                     <label class ="weight" for="w5" >
                         W<sub>5</sub>=
                     </label>
-                    <input type="number" id="w5" value="0" />
+                    <input type="number" id="w5" value="5" />
                     <input type="submit" value="Update" class="button" />
                     <span class="enable">Enable :</span>
                     <label class="switch">
@@ -290,5 +296,130 @@
         <div class="rightpane" id="plot"></div>
     </div>
 
+    <script>
+        function draw(){
+            function fw1(w,x){
+                return w/(1+x)
+            }
+            function fw2(w,x){
+                return w*x
+            }
+            function fw3(w,x){
+                return ((100-x)*w)/100
+            }
+            function fw4(w,x){
+                return w*x
+            }
+            function fw5(w,x){
+                return w*x
+            }
+
+            function draw(data){
+                Plotly.newPlot('plot', data)
+            }
+
+            const min=-10
+            const max=10
+            const step=0.01
+            const pts=parseInt((max-min)/step)
+
+            w1=parseFloat(document.getElementById("w1").value)
+            w2=parseFloat(document.getElementById("w2").value)
+            w3=parseFloat(document.getElementById("w3").value)
+            w4=parseFloat(document.getElementById("w4").value)
+            w5=parseFloat(document.getElementById("w5").value)
+
+            xVal=[]
+            xVal1=[]
+            for(i=0;i<=pts;i++){
+                xVal[i]=min+step*i;
+            }
+            for(i=0,j=0;i<=pts;i++){
+                if((-10+0.2*i)!=-1){
+                    xVal1[j]=min+step*i;
+                    j++;
+                }
+            }
+
+            yVal1=[]
+            yVal2=[]
+            yVal3=[]
+            yVal4=[]
+            yVal5=[]
+            for(i=0;i<pts;i++){
+                yVal1[i]=fw1(w1,xVal1[i])
+            }
+            for(i=0;i<=pts;i++){
+                yVal2[i]=fw2(w2,xVal[i])
+            }
+            for(i=0;i<=pts;i++){
+                yVal3[i]=fw3(w3,xVal[i])
+            }
+            for(i=0;i<=pts;i++){
+                yVal4[i]=fw4(w4,xVal[i])
+            }
+            for(i=0;i<=pts;i++){
+                yVal5[i]=fw5(w5,xVal[i])
+            }
+            
+            trace1 = {
+                x: xVal1,
+                y: yVal1,
+                type: 'scatter',
+                name: "Pick before Time"
+            }
+            trace2 = {
+                x: xVal,
+                y: yVal2,
+                type: 'scatter',
+                name: "Rack Fulfillability"
+            }
+            trace3 = {
+                x: xVal,
+                y: yVal3,
+                type: 'scatter',
+                name: "Client Priority"
+            }
+            trace4 = {
+                x: xVal,
+                y: yVal4,
+                type: 'scatter',
+                name: "Distance"
+            }
+            trace5 = {
+                x: xVal,
+                y: yVal5,
+                type: 'scatter',
+                name: "No.of Rack"
+            }
+
+            data = [trace1,trace2,trace3,trace4,trace5]
+
+            Plotly.newPlot('plot',data)
+        }
+
+        document.getElementById('form1').onsubmit = function(event) {
+            event.preventDefault();
+            draw();
+        }
+        document.getElementById('form2').onsubmit = function(event) {
+            event.preventDefault();
+            draw();
+        }
+        document.getElementById('form3').onsubmit = function(event) {
+            event.preventDefault();
+            draw();
+        }
+        document.getElementById('form4').onsubmit = function(event) {
+            event.preventDefault();
+            draw();
+        }
+        document.getElementById('form5').onsubmit = function(event) {
+            event.preventDefault();
+            draw();
+        }
+        draw()
+              
+    </script>
 </body>
 </html>
