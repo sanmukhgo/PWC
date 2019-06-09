@@ -29,8 +29,13 @@
     }
 
     .enable{
-        margin-left: 2em; 
-        font-family: 'Montserrat',sans-serif;;
+        margin-left: 3px; 
+        font-family: 'Montserrat',sans-serif;
+    }
+
+    .freeze{
+        margin-left: 3px; 
+        font-family: 'Montserrat',sans-serif;
     }
 
     .parameter{
@@ -50,13 +55,20 @@
         font-family: 'Montserrat',sans-serif;
     }
 
+    .variable{
+        font-weight: bold;
+        font-size: 120%;
+        font-family: 'Montserrat',sans-serif;
+        margin-left: 5px;
+    }
+
     .container{
         width: 100%;
         height: 35em
     }
 
     .leftpane{
-        width: 23em;
+        width: 28em;
         height: 31em;
         float: left;
         position: relative;
@@ -79,11 +91,11 @@
     }
 
     .rightpane{
-        width: 53em;
+        width: 51em;
         height: 30em;
         position: relative;
         /*float: right;*/
-        margin-left: 25em;
+        margin-left: 30em;
         background-color: lightskyblue;
         border-collapse: collapse;
     }
@@ -143,7 +155,7 @@
         background-color: #2196F3;
         border: none;
         color: white;
-        padding: 5px 10px;
+        padding: 5px 5px;
         text-align: center;
         text-decoration: none;
         display: inline-block;
@@ -154,7 +166,7 @@
 
     input[type=number] {
         text-align: center;
-        width: 20%;
+        width: 10%;
         padding: 4px 5px;
         margin: 2px 0;
         box-sizing: border-box;
@@ -172,6 +184,46 @@
     input[type=number]::-webkit-outer-spin-button { 
         -webkit-appearance: none; 
         margin: 0; 
+    }
+
+    .toggle {
+        position: relative;
+        display: inline-block;
+        width: 20px;
+        height: 18px;
+    }
+
+    .toggle input { 
+        opacity: 0;
+        width: 0;
+        height: 0;
+    }
+
+    .toggler {
+        position: absolute;
+        cursor: pointer;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background-color: whitesmoke;
+        -webkit-transition: .4s;
+        transition: .4s;
+        border: 2px solid rgb(184, 181, 181);
+    }
+
+    .toggler:before {
+        position: absolute;
+        content: "";
+        height: 0px;
+        width: 0px;
+        background-color: white;
+        -webkit-transition: .4s;
+        transition: .4s;
+    }
+
+    input:checked + .toggler {
+       background-color: rgb(13, 202, 13);
     }
 
 </style>
@@ -197,7 +249,16 @@
                         w<sub>1</sub> =
                     </label>
                     <input type="number" class="w" id="w1" value="1" />
+                    <label class="variable" for="v1">
+                        t =
+                    </label>
+                    <input type="number" class="v" id="v1" value="0" />
                     <input type="submit" value="Update" class="button" />
+                    <span class="freeze">Freeze :</span>
+                    <label class="toggle">
+                        <input type="checkbox" class="f" id="f1" onclick="draw()"/>
+                        <span class="toggler"></span>
+                    </label>
                     <span class="enable">Enable :</span>
                     <label class="switch">
                         <input type="checkbox" class="e" id="e1" onclick="draw()" checked/>
@@ -225,7 +286,16 @@
                         w<sub>2</sub> =
                     </label>
                     <input type="number" class="w" id="w2" value="2" />
+                    <label class="variable" for="v2">
+                        x =
+                    </label>
+                    <input type="number" class="v" id="v2" value="0" />
                     <input type="submit" value="Update" class="button" />
+                    <span class="freeze">Freeze :</span>
+                    <label class="toggle">
+                        <input type="checkbox" class="f" id="f2" onclick="draw()"/>
+                        <span class="toggler"></span>
+                    </label>
                     <span class="enable">Enable :</span>
                     <label class="switch">
                         <input type="checkbox" class="e" id="e2" onclick="draw()" checked/>
@@ -249,7 +319,16 @@
                         w<sub>3</sub> =
                     </label>
                     <input type="number" class="w" id="w3" value="3" />
+                    <label class="variable" for="v3">
+                        x =
+                    </label>
+                    <input type="number" class="v" id="v3" value="0" />
                     <input type="submit" value="Update" class="button" />
+                    <span class="freeze">Freeze :</span>
+                    <label class="toggle">
+                        <input type="checkbox" class="f" id="f3" onclick="draw()"/>
+                        <span class="toggler"></span>
+                    </label>
                     <span class="enable">Enable :</span>
                     <label class="switch">
                         <input type="checkbox" class="e" id="e3" onclick="draw()" checked/>
@@ -273,7 +352,16 @@
                         w<sub>4</sub> =
                     </label>
                     <input type="number" class="w" id="w4" value="4" />
+                    <label class="variable" for="v4">
+                        x =
+                    </label>
+                    <input type="number" class="v" id="v4" value="0" />
                     <input type="submit" value="Update" class="button" />
+                    <span class="freeze">Freeze :</span>
+                    <label class="toggle">
+                        <input type="checkbox" class="f" id="f4" onclick="draw()"/>
+                        <span class="toggler"></span>
+                    </label>
                     <span class="enable">Enable :</span>
                     <label class="switch">
                         <input type="checkbox" class="e" id="e4" onclick="draw()" checked/>
@@ -297,7 +385,16 @@
                         w<sub>5</sub> =
                     </label>
                     <input type="number" class="w" id="w5" value="5" />
+                    <label class="variable" for="v5">
+                        x =
+                    </label>
+                    <input type="number" class="v" id="v5" value="0" />
                     <input type="submit" value="Update" class="button" />
+                    <span class="freeze">Freeze :</span>
+                    <label class="toggle">
+                        <input type="checkbox" class="f" id="f5" onclick="draw()"/>
+                        <span class="toggler"></span>
+                    </label>
                     <span class="enable">Enable :</span>
                     <label class="switch">
                         <input type="checkbox" class="e" id="e5" onclick="draw()" checked/>
@@ -312,70 +409,97 @@
 
     <script>
         function draw(){
+            function fw0(w,x){
+                return w/(1+x);
+            }
             function fw1(w,x){
-                return w/(1+x)
+                return w*x;
             }
             function fw2(w,x){
-                return w*x
+                return ((100-x)*w)/100;
             }
             function fw3(w,x){
-                return ((100-x)*w)/100
+                return w*x;
             }
             function fw4(w,x){
-                return w*x
-            }
-            function fw5(w,x){
-                return w*x
+                return w*x;
             }
 
             function draw(data){
-                Plotly.newPlot('plot', data)
+                Plotly.newPlot('plot', data);
             }
 
-            const min=-10
-            const max=15
-            const step=0.01
-            const pts=parseInt((max-min)/step)
+            fw=[fw0,fw1,fw2,fw3,fw4]
+
+            const min=-10;
+            const max=15;
+            const step=0.01;
+            const pts=parseInt((max-min)/step);
 
             w=document.getElementsByClassName("w");
             e=document.getElementsByClassName("e");
+            f=document.getElementsByClassName("f");
+            v=document.getElementsByClassName("v");
+
+            es=[];
+            for(i=0;i<5;i++){
+                if(e[i].checked)
+                    es[i]=1;
+                else
+                    es[i]=0;
+            }
 
             xVal=[];
-            xVal0=[];
             for(i=0;i<=pts;i++){
                 xVal[i]=min+step*i;
             }
-            for(i=0,j=0;i<=pts;i++){
-                if((-10+0.2*i)!=-1){
-                    xVal0[j]=min+step*i;
-                    j++;
-                }
-            }
 
-            yVal0=[]
+            yVal0=[];
             yVal1=[];
             yVal2=[];
             yVal3=[];
             yVal4=[];
-            for(i=0;i<pts;i++){
-                yVal0[i]=fw1(w[0].value,xVal0[i])
+            yVal5=[];
+            for(i=0;i<=pts;i++){
+                if((min+step*i)!=-1)
+                    yVal0[i]=fw[0](w[0].value,xVal[i]);
+                else 
+                    yVal0[i]=null;
             }
             for(i=0;i<=pts;i++){
-                yVal1[i]=fw2(w[1].value,xVal[i])
+                yVal1[i]=fw[1](w[1].value,xVal[i]);
             }
             for(i=0;i<=pts;i++){
-                yVal2[i]=fw3(w[2].value,xVal[i])
+                yVal2[i]=fw[2](w[2].value,xVal[i]);
             }
             for(i=0;i<=pts;i++){
-                yVal3[i]=fw4(w[3].value,xVal[i])
+                yVal3[i]=fw[3](w[3].value,xVal[i]);
             }
             for(i=0;i<=pts;i++){
-                yVal4[i]=fw5(w[4].value,xVal[i])
+                yVal4[i]=fw[4](w[4].value,xVal[i]);
+            }
+
+            fVal=[];
+            for(i=0;i<5;i++){
+                fVal[i]=fw[i](w[i].value,parseFloat(v[i].value));
             }
             
-            trc=[]
+            yVal=[yVal0.slice(0,),yVal1.slice(0,),yVal2.slice(0,),yVal3.slice(0,),yVal4.slice(0,)];
+            for(i=0;i<5;i++){
+                if(f[i].checked)
+                    for(j=0;j<=pts;j++)
+                        yVal[i][j]=fVal[i];
+            }
+
+            for(i=0;i<=pts;i++){
+                if((min+step*i)!=-1)
+                    yVal5[i]=es[0]*yVal[0][i]+es[1]*yVal[1][i]+es[2]*yVal[2][i]+es[3]*yVal[3][i]+es[4]*yVal[4][i];
+                else 
+                    yVal5[i]=null;
+            }
+            trc=[];
             trc[0] = {
-                x: xVal0,
+                x: xVal,
                 y: yVal0,
                 type: 'scatter',
                 name: "Pick before Time",
@@ -410,7 +534,7 @@
                 type: 'scatter',
                 name: "Distance",
                 line: {
-                    color: 'rgb(204, 41, 0)',
+                    color: 'rgb(214, 41, 0)',
                     width: 2
                 }
             }
@@ -424,11 +548,22 @@
                     width: 2
                 }
             }
+            trc[5] = {
+                x: xVal,
+                y: yVal5,
+                type: 'scatter',
+                name: "Total Heuristic",
+                line: {
+                    color: 'rgb(0, 0, 102)',
+                    width: 2
+                }
+            }
 
             trace=[]
             for(i=0;i<5;i++)
                 if(e[i].checked)
                     trace.push(trc[i]);
+            trace.push(trc[5]);
 
             data = trace;
             layout = {
@@ -446,7 +581,7 @@
                     titlefont: { 
                             family: 'Courier New, monospace',
                             size: 30,
-                            color: '#7f7f7f'
+                            color: '#7f7f7f',
                         },
                     linecolor: 'black',
                     linewidth: 2,
@@ -457,7 +592,7 @@
                     titlefont: { 
                             family: 'Courier New, monospace',
                             size: 25,
-                            color: '#7f7f7f'
+                            color: '#7f7f7f',
                         },
                     linecolor: 'black',
                     linewidth: 2,
