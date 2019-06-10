@@ -124,7 +124,7 @@
 
     .rightpane{
         width: 52em;
-        height: 30em;
+        height: 32em;
         position: relative;
         /*float: right;*/
         margin-left: 29em;
@@ -246,7 +246,7 @@
 
     input:checked + .toggler {
        background-color: rgb(64, 161, 240);
-       border-color: rgb(97, 95, 95);
+       border-color: rgb(83, 82, 82);
     }
 
 </style>
@@ -520,6 +520,7 @@
                 else 
                     yVal5[i]=null;
             }
+
             trc=[];
             trc[0] = {
                 x: xVal,
@@ -589,7 +590,12 @@
             trace.push(trc[5]);
 
             data = trace;
+
             layout = {
+                autosize: true,
+                margin: {
+                    pad: 0,
+                },
                 legend: {
                     traceorder: 'normal',
                     font: {
