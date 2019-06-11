@@ -70,19 +70,19 @@
     }
 
     .leftpane{
-        width: 27em;
-        height: 32em;
+        width: 29em;
+        height: 36em;
         float: left;
         position: relative;
     }
 
     .inleft{
-        width: 100%;
-        height: 18%;
+        width: 95%;
+        height: 16%;
         padding-top: 6px;
         padding-left: 6px;
         background-color: #ece9e9;
-        box-shadow: 2px 2px 4px #c2bebe;
+        box-shadow: 2px 2px 5px #c2bebe;
         margin-left: 10px;
     }
 
@@ -123,12 +123,11 @@
     }
 
     .rightpane{
-        width: 52em;
-        height: 32em;
+        width: 50em;
+        height: 35em;
         position: relative;
-        /*float: right;*/
-        margin-left: 29em;
-        background-color: lightskyblue;
+        float: right;/**/
+        /*margin-left: 30em;*/
         border-collapse: collapse;
     }
 
@@ -508,7 +507,8 @@
             }
             
             yVal=[yVal0.slice(0,),yVal1.slice(0,),yVal2.slice(0,),yVal3.slice(0,),yVal4.slice(0,)];
-            for(i=0;i<5;i++){
+		
+            for(i=0;i<5;i++){/*checks if freeze is on and if so then uses it instead*/
                 if(f[i].checked)
                     for(j=0;j<=pts;j++)
                         yVal[i][j]=fVal[i];
@@ -572,14 +572,29 @@
                     width: 2
                 }
             }
-            trc[5] = {
-                x: xVal,
-                y: yVal5,
-                type: 'scatter',
-                name: "Total Heuristic",
-                line: {
-                    color: 'rgb(0, 0, 102)',
-                    width: 2
+            if(e[0].checked==false || f[0].checked==true){
+                trc[5] = {
+                    x: xVal,
+                    y: yVal5,
+                    type: 'scatter',
+                    name: "Total Heuristic",
+                    line: {
+                        color: 'rgb(0, 0, 102)',
+                        width: 2
+                    },
+                    connectgaps: true
+                }
+            }
+            else{
+                trc[5] = {
+                    x: xVal,
+                    y: yVal5,
+                    type: 'scatter',
+                    name: "Total Heuristic",
+                    line: {
+                        color: 'rgb(0, 0, 102)',
+                        width: 2
+                    }
                 }
             }
 
